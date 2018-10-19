@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f79b8f05d3c91407c389166850d011f5fd2dde5978c7170639d273eb26750ec5
+-- hash: 8994e5aae3c8dc66691072f5807c45126bef5236fb1c524d730354c240c5882a
 
 name:           data-ion
 version:        0.0.0
@@ -26,10 +26,13 @@ source-repository head
   location: https://github.com/Kove-W-O-Salter/data-ion
 
 library
+  exposed-modules:
+      Data.Ion
   other-modules:
       Paths_data_ion
   hs-source-dirs:
       src
   build-depends:
       base ==4.11.1.0
+    , template-haskell ==2.13.0.0
   default-language: Haskell2010
