@@ -1,5 +1,5 @@
 # data-ion
-<center>![data-ion logo](./data-ion.png)</center>
+<p align="center"><img src="./data-ion.png" alt="data-ion logo"/></p>
 
 Generate amazing, uncurried data-constructors from type-constructors.
 
