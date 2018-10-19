@@ -1,27 +1,34 @@
 # data-ion
-![data-ion logo](./data-ion.png)
+<center>![data-ion logo](./data-ion.png)</center>
 
 Generate amazing, uncurried data-constructors from type-constructors.
 
 ## Description
- This module contains functions for generating `Ion`s for all of the data-constructors of a type-constructor.
- `Ion`s are, simply put, uncurried data-constructors.
+ data-ion is a library containing functions for generating `Ion`s for all
+ of the data-constructors of a type-constructor. `Ion`s are, simply put,
+ uncurried data-constructors.
 
  So the Ions of `Bool` are:
 
  ```haskell
+ trueIon :: () -> Bool
  trueIon () = True
+
+ falseIon :: () -> Bool
  falseIon () = False
  ```
 
  The `Ion`s of `Maybe` are:
 
  ```haskell
+ justIon :: a -> Maybe a
  justIon = Just
+
+ nothingIon :: () -> Maybe a
  nothingIon () = Nothing
  ```
 
- and the “Ion”s of:
+ and the `Ion`s of:
 
  ```haskell
  data Person = Person String Int
@@ -30,6 +37,7 @@ Generate amazing, uncurried data-constructors from type-constructors.
  are:
 
  ```haskell
+ personIon :: (String, Int) -> Person
  personIon (name, age) = Person name age
  ```
 
@@ -46,28 +54,40 @@ Generate amazing, uncurried data-constructors from type-constructors.
 
  1.
   ```haskell
-  data Boolean = True | False
+  {-# LANGUAGE TemplateHaskell #-}
+
+  import Prelude hiding (Bool)
+
+  data Bool = True | False
  
-  mkIons ''Boolean
+  mkIons ''Bool
   ```
   This will generate the following functions:
   ```haskell
+  trueIon :: () -> Bool
   trueIon () = True
+
+  falseIon :: () -> Bool
   falseIon () = False
   ```
  2.
   ```haskell
-  data Shape = Circle { radius :: Float }
-             | Rectangle { length :: Float, depth :: Float, height :: Float }
-             | Triangle { base :: Float, height_ :: Float }
+  {-# LANGUAGE TemplateHaskell #-}
+
+  data Shape = Circle Float | Rectangle Float Float Float | Triangle Float Float
   
   mkIons ''Shape
   ```
   This will generate the following functions:
 
   ```haskell
+  circleIon :: Float -> Shape
   circleIon = Circle
+
+  rectangleIon :: (Float, Float, Float) -> Shape
   rectangleIon (l, d, h) = Rectangle l d h
+
+  triangleIon :: (Float, Float) -> Shape
   triangleIon (b, h) = Triangle b h
   ```
 
@@ -77,4 +97,4 @@ Generate amazing, uncurried data-constructors from type-constructors.
 
 ## License
  `data-ion` is licensed under the MIT License.
- Please see [LICENSE.md](./LICENSE.md) for details.
+ Please see [LICENSE](./LICENSE) for details.
