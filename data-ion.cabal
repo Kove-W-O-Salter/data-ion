@@ -1,0 +1,35 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: f79b8f05d3c91407c389166850d011f5fd2dde5978c7170639d273eb26750ec5
+
+name:           data-ion
+version:        0.0.0
+synopsis:       Generate amazing, uncurried data-constructors from type-constructors.
+description:    Please see the README on GitHub at <https://github.com/Kove-W-O-Salter/data-mql#readme>
+category:       Data
+homepage:       https://github.com/Kove-W-O-Salter/data-ion#readme
+bug-reports:    https://github.com/Kove-W-O-Salter/data-ion/issues
+author:         Kove W. Ochre-Salter
+maintainer:     kove.w.o.salter@gmail.com
+copyright:      2018 Kove W. Ochre-Salter
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/Kove-W-O-Salter/data-ion
+
+library
+  other-modules:
+      Paths_data_ion
+  hs-source-dirs:
+      src
+  build-depends:
+      base ==4.11.1.0
+  default-language: Haskell2010

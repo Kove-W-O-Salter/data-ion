@@ -1,0 +1,20 @@
+name: data-ion
+version: 0.0.0
+github: "Kove-W-O-Salter/data-ion"
+license: MIT
+license-file: LICENSE
+author: "Kove W. Ochre-Salter"
+maintainer: "kove.w.o.salter@gmail.com"
+copyright: "2018 Kove W. Ochre-Salter"
+synopsis: "Generate amazing, uncurried data-constructors from type-constructors." 
+category: Data
+description: Please see the README on GitHub at <https://github.com/Kove-W-O-Salter/data-mql#readme>
+
+extra-source-files:
+- README.md
+
+dependencies:
+- base == 4.11.1.0
+
+library:
+  source-dirs: src
