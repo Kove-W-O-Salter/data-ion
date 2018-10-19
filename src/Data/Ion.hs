@@ -67,8 +67,8 @@ Portability : TemplateHaskell, LambdaCase
 
  = Naming
  “Ion” is an acronym for “amazing uncurrIed data-cONstructors”.
- I chose this name because, as we all know, ions are atoms that are electrically charged, electricity is
- often associated with excitement and I felt excited about the concept of uncurried data-constructors,
+ I chose this name because, as we all know, ions are atoms (or groups of atoms) that are electrically charged,
+ electricity is often associated with excitement and I felt excited about the concept of uncurried data-constructors,
  therefore, it is the perfect name.
 -}
 
