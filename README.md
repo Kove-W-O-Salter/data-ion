@@ -4,7 +4,7 @@
 Generate amazing, uncurried data-constructors from type-constructors.
 
 ## Description
- data-ion is a library containing functions for generating `Ion`s for all
+ `data-ion` is a library containing functions for generating `Ion`s for all
  of the data-constructors of a type-constructor. `Ion`s are, simply put,
  uncurried data-constructors.
 
