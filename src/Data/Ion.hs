@@ -126,8 +126,13 @@ module Data.Ion (mkIons)
 
 
     {-|
-     Generate an Ion for each, data-constructor belonging to a type-constructor with the 'Name' “typeName”.
-     See the module-description for information.
+     = Description
+      Generate an Ion for each, data-constructor belonging to a type-constructor with the 'Name' “typeName”.
+      See the module-description for information.
+
+     = Examples
+
+      /See the module-description/.
      -}
 
     mkIons :: Name -> Q [Dec]
@@ -148,8 +153,14 @@ module Data.Ion (mkIons)
 
 
     {-|
-     Generate an Ion for a data-constructor (the first argument).
-     See the module-description for information.
+     = Description
+
+      Generate an Ion for a data-constructor (the first argument).
+      See the module-description for information.
+
+     = Examples
+
+      /Unavailable/.
      -}
 
     mkIon :: Con -> Q Dec
@@ -171,11 +182,16 @@ module Data.Ion (mkIons)
 
 
     {-|
-     Generate a compile-time error message in the format:
+     = Description
+      Generate a compile-time error message in the format:
 
-     @
-     Ion: ${message}.
-     @
+      @
+      Ion: ${message}.
+      @
+
+     = Examples
+
+      /Unavailable/.
      -}
 
     error :: Monad m => String -> m a
@@ -187,12 +203,44 @@ module Data.Ion (mkIons)
 
 
     {-|
-     Split a qualified-name into a list of 'Strings' contain each module-level of the name.
-     
-     For example:
+     = Description
 
-     >>> segmentate "Data.Char.toUpper"
-     ["Data", "Char", "toUpper"]
+      Given some type “a” (the separator) and a list with elements of the type “a”,
+      split the list into a list of segments separated by elements equal to the
+      separator (the separator element is not included in the resulting list).
+
+     = Examples
+
+      == 1
+
+       To split a qualified identifier into module levels do:
+  
+       >>> segmentate '.' "Data.Char.toUpper"
+       ["Data", "Char", "toUpper"]
+ 
+      == 2
+ 
+       You can use it to split UNIX-style $PATHs (Windows style
+       “\\”s have been used because of Haddock’s italic syntax):
+  
+       >>> segmentate ':' "\\bin:\\usr\\bin:\\usr\\local\\bin\\:."
+       ["\\bin", "\\usr\\bin", "\\usr", "\\local\\bin\\", "."]
+
+      == 2
+ 
+       To define 'Data.List.words' do:
+  
+       >>> words' = segmentate ' '
+       >>> words' "Hello, World"
+       ["Hello,", "World"]
+
+      == 3
+
+       To define 'Data.List.lines' do:
+
+       >>> lines' = segmentate '\n'
+       >>> lines' "Hello\nWorld"
+       ["Hello", "World"]
      -}
 
     segmentate :: Eq a => a -> [a] -> [[a]]
@@ -204,12 +252,26 @@ module Data.Ion (mkIons)
 
 
     {-|
-     Convert the first character in a string to lower-case.
+     = Description
 
-     For example:
+      Convert the first character in a string to lower-case.
 
-     >>> uncapitalise "Foo"
-     "foo"
+     = Examples
+
+      == 1
+
+       >>> uncapitalise "Foo"
+       "foo"
+
+      == 2
+
+       >>> uncapitalise "FOO"
+       "fOO"
+
+      == 3
+
+       >>> uncapitalise "_FOO"
+       "_FOO"
      -}
 
     uncapitalise :: String -> String
