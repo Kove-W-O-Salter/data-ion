@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8994e5aae3c8dc66691072f5807c45126bef5236fb1c524d730354c240c5882a
+-- hash: 6ca71f50a81dda202fc4436134fb2aa25ed324ed1ebbe9aad401ade8c15ca03c
 
 name:           data-ion
 version:        0.0.0
@@ -35,4 +35,18 @@ library
   build-depends:
       base ==4.11.1.0
     , template-haskell ==2.13.0.0
+  default-language: Haskell2010
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_data_ion
+  hs-source-dirs:
+      test
+  build-depends:
+      base ==4.11.1.0
+    , data-ion ==0.0.0
+    , template-haskell ==2.13.0.0
+    , text ==1.2.3.1
   default-language: Haskell2010

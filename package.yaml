@@ -20,3 +20,11 @@ dependencies:
 library:
   source-dirs: src
   exposed-modules: Data.Ion
+
+tests:
+  spec:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+    - data-ion == 0.0.0
+    - text == 1.2.3.1
