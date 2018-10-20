@@ -13,23 +13,38 @@ Portability : TemplateHaskell, LambdaCase
  This module contains functions for generating “Ion”s for all of the data-constructors of a type-constructor.
  “Ion”s are, simply put, uncurried data-constructors.
 
- So the Ions of 'Bool' are:
+ So the “Ion”s of 'Bool' are:
 
- > trueIon = True
- > falseIon = False
+ @
+ trueIon :: () -> Bool
+ trueIon () = True
+
+ falseIon :: () -> Bool
+ falseIon () = False
+ @
 
  The “Ion”s of 'Maybe' are:
 
- > justIon = Just
- > nothingIon = Nothing
+ @
+ justIon :: a -> Maybe a
+ justIon = Just
+
+ nothingIon :: () -> Maybe a
+ nothingIon () = Nothing
+ @
 
  and the “Ion”s of:
 
- > data Person = Person String Int deriving (Show)
+ @
+ data Person = Person String Int
+ @
 
  are:
 
- > personIon (name, age) = Person name age
+ @
+ personIon :: (String, Int) -> Person
+ personIon (name, age) = Person name age
+ @
 
  So, when you run:
 
@@ -44,26 +59,44 @@ Portability : TemplateHaskell, LambdaCase
 
  == 1
 
-  > data Boolean = True | False
-  >
-  > mkIons ''Boolean
+  @
+  import Prelude hiding (Bool)
+
+  data Bool = True | False
+ 
+  mkIons ''Bool
+  @
 
   This will generate the following functions:
 
-  > trueIon () = True
-  > falseIon () = False
+  @
+  trueIon :: () -> Bool
+  trueIon () = True
+
+  falseIon :: () -> Bool
+  falseIon () = False
+  @
 
  == 2
 
-  > data Shape = Circle { radius :: Float } | Rectangle { length :: Float, depth :: Float, height :: Float } | Triangle { base :: Float, height_ :: Float }
-  >
-  > mkIons ''Shape
+  @
+  data Shape = Circle Float | Rectangle Float Float Float | Triangle Float Float
+  
+  mkIons ''Shape
+  @
 
   This will generate the following functions:
 
-  > circleIon = Circle
-  > rectangleIon (l, d, h) = Rectangle l d h
-  > triangleIon (b, h) = Triangle b h
+  @
+  circleIon :: Float -> Shape
+  circleIon = Circle
+
+  rectangleIon :: (Float, Float, Float) -> Shape
+  rectangleIon (l, d, h) = Rectangle l d h
+
+  triangleIon :: (Float, Float) -> Shape
+  triangleIon (b, h) = Triangle b h
+  @
 
  = Naming
  “Ion” is an acronym for “amazing uncurrIed data-cONstructors”.
