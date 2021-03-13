@@ -1,7 +1,6 @@
 # data-ion
-<p align="center"><img src="./data-ion.png" alt="data-ion logo"/></p>
 
-Generate amazing, uncurried data-constructors from type-constructors.
+A little play with Template Haskell! I do not think that there are really any applications for this.
 
 ## Description
  `data-ion` is a library containing functions for generating `Ion`s for all
@@ -90,10 +89,6 @@ Generate amazing, uncurried data-constructors from type-constructors.
   triangleIon :: (Float, Float) -> Shape
   triangleIon (b, h) = Triangle b h
   ```
-
-## Naming
- `Ion` is an acronym for `amazing uncurrIed data-cONstructors`.
- I chose this name because, as we all know, ions are atoms (or groups of atoms) that are electrically charged, electricity is often associated with excitement and I felt excited about the concept of uncurried data-constructors, therefore, it is the perfect name.
 
 ## License
  `data-ion` is licensed under the MIT License.
